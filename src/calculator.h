@@ -6,6 +6,7 @@
 #include <stack>
 #include <unordered_map>
 #include "number.h"
+#include "plugin_manager.h"
 
 class Calculator
 {
