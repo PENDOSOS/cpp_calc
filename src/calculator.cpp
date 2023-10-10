@@ -3,14 +3,12 @@
 Calculator::Calculator()
 {
 	degDll = LoadLibraryA("funcdeg.dll");
-	sinDll = LoadLibraryA("funcsin.dll");
 	initPriorityTable();
 }
 
 Calculator::~Calculator()
 {
 	FreeLibrary(degDll);
-	FreeLibrary(sinDll);
 }
 
 Calculator& Calculator::getInstance()

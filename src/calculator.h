@@ -36,8 +36,5 @@ private:
 	std::vector<std::string> output_string;
 
 	typedef double (*pDeg) (double left, double right);
-	typedef double (*pSin) (double left, double right);
-
 	HMODULE degDll;
-	HMODULE sinDll;
 };
