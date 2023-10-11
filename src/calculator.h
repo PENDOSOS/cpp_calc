@@ -18,12 +18,12 @@ public:
 
 	static Calculator& getInstance();
 
-	std::string makeString(char* entry_arg);
+	std::string makeString(std::string const& entry_arg);
 	void makeEntryString(std::string const& str);
 
 	void printResult();
 
-	~Calculator();
+	~Calculator() = default;
 
 private:
 	Calculator();
@@ -38,7 +38,4 @@ private:
 	std::vector<std::string> entry_string;
 	std::unordered_map<std::string, int> priority_table;
 	std::vector<std::string> output_string;
-
-	typedef double (*pDeg) (double left, double right);
-	HMODULE degDll;
 };

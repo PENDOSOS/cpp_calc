@@ -3,13 +3,7 @@
 
 Calculator::Calculator()
 {
-	degDll = LoadLibraryA("funcdeg.dll");
 	initPriorityTable();
-}
-
-Calculator::~Calculator()
-{
-	FreeLibrary(degDll);
 }
 
 Calculator& Calculator::getInstance()
@@ -18,9 +12,14 @@ Calculator& Calculator::getInstance()
 	return test;
 }
 
-std::string Calculator::makeString(char* entry_arg)
+std::string Calculator::makeString(std::string const& entry_arg)
 {
-	std::string temp(entry_arg);
+	std::string temp;
+	for (int i = 0; i < entry_arg.size(); i++)
+	{
+		if (entry_arg[i] != ' ')
+			temp.push_back(entry_arg[i]);
+	}
 	return temp;
 }
 
@@ -58,6 +57,17 @@ void Calculator::preprocess()
 			double res = plugin_manager.function(*it, value);
 			*it = std::to_string(res);
 			entry_string.erase(it + 1, it + 4);
+		}
+		else if (!priority_table.contains(*it))
+		{
+			try
+			{
+				stod(*it);
+			}
+			catch (...)
+			{
+				throw std::exception();
+			}
 		}
 	}
 }
@@ -138,11 +148,7 @@ void Calculator::calculate()
 				break;
 			case 4:
 			{
-				if (degDll != NULL)
-				{
-					pDeg deg = (pDeg)GetProcAddress(degDll, "deg");
-					new_elem = std::to_string(plugin_manager.function("deg", a.value, b.value));
-				}
+				new_elem = std::to_string(plugin_manager.function("deg", a.value, b.value));
 			}
 			default:
 				break;

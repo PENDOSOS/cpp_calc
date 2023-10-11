@@ -58,7 +58,7 @@ double PluginManager::function(const std::string& name, double const& value1, do
         }
         catch (...)
         {
-            throw std::exception("aboba");
+            throw std::exception();
         }
     }
     else

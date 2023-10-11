@@ -1,29 +1,23 @@
 #include <iostream>
 #include "calculator.h"
 
-#include "number.h"
-
-int main(int argc, char* argv[])
+int main()
 {
 	auto& calculator = Calculator::getInstance();  
 
-	int i = 1;
-	while (i != argc)
-	{
-		calculator.makeEntryString(calculator.makeString(argv[i]));
-		i++;
-	}
+	std::string expression;
+	std::cout << "Enter the expression you want to calculate: ";
+	std::getline(std::cin, expression);
 
-	if (argc > 1)
+	calculator.makeEntryString(calculator.makeString(expression));
+
+	try
 	{
-		try
-		{
-			calculator.printResult();
-		}
-		catch (const std::exception&)
-		{
-			std::cout << "error";
-		}
+		calculator.printResult();
+	}
+	catch (const std::exception&)
+	{
+		std::cout << "error";
 	}
 
 	return 0;
