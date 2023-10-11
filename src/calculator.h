@@ -29,8 +29,11 @@ private:
 	Calculator();
 
 	void initPriorityTable();
+	void preprocess();
 	void polishNotation();
 	void calculate();
+
+	PluginManager plugin_manager;
 
 	std::vector<std::string> entry_string;
 	std::unordered_map<std::string, int> priority_table;

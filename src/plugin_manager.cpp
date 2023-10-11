@@ -8,7 +8,7 @@ void PluginManager::addFunc(std::string const& name)
         throw std::exception();
 
     std::string function = name.substr(0, name.find(".dll"));
-    function.erase(0, 3);
+    function.erase(0, 4);
 
     auto func = (func_type)GetProcAddress(hm, "func");
 

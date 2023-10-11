@@ -4,10 +4,13 @@
 #define FUNCSIN_API __declspec(dllimport)
 #endif // FUNCSIN_EXPORTS
 
-extern "C" FUNCSIN_API float funcsin(float a);
+#define PI 3.14
 
-float funcsin(float a)
+extern "C" FUNCSIN_API double func(double a);
+
+double func(double a)
 {
+	a = a * PI / 180;
 	float _sin = a;
 	for (int i = 1; i < 4; i++)
 	{

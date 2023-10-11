@@ -1,4 +1,5 @@
 #include "Calculator.h"
+#include "plugin_manager.h"
 
 Calculator::Calculator()
 {
@@ -43,6 +44,21 @@ void Calculator::makeEntryString(std::string const& str)
 			i = j - 1;
 		}
 		i++;
+	}
+}
+
+void Calculator::preprocess() 
+{
+	for (std::vector<std::string>::iterator it = entry_string.begin(); it != entry_string.end(); ++it)
+	{
+		if (plugin_manager.contains(*it))
+		{
+			auto it_plus1 = it + 2;
+			double value = stod(*it_plus1);
+			double res = plugin_manager.function(*it, value);
+			*it = std::to_string(res);
+			entry_string.erase(it + 1, it + 4);
+		}
 	}
 }
 
@@ -142,6 +158,7 @@ void Calculator::calculate()
 
 void Calculator::printResult()
 {
+	preprocess();
 	polishNotation();
 	calculate();
 	std::cout << output_string[0];

@@ -15,7 +15,16 @@ int main(int argc, char* argv[])
 	}
 
 	if (argc > 1)
-		calculator.printResult();
+	{
+		try
+		{
+			calculator.printResult();
+		}
+		catch (const std::exception&)
+		{
+			std::cout << "error";
+		}
+	}
 
 	return 0;
 }
