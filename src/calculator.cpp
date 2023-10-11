@@ -141,7 +141,7 @@ void Calculator::calculate()
 				if (degDll != NULL)
 				{
 					pDeg deg = (pDeg)GetProcAddress(degDll, "deg");
-					new_elem = std::to_string(deg(a.value, b.value));
+					new_elem = std::to_string(plugin_manager.function("deg", a.value, b.value));
 				}
 			}
 			default:

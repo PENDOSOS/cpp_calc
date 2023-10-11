@@ -7,7 +7,7 @@
 #include <direct.h>
 #include <vector>
 
-using func_type = double(*)(double);
+using func_type = double(*)(double, double);
 
 class PluginManager {
     std::string path;
@@ -16,6 +16,6 @@ class PluginManager {
     std::string getPath();
 public:
     PluginManager();
-    double function(std::string const& name, double const& values);
+    double function(const std::string& name, double const& value1, double const& value2 = 0);
     bool contains(std::string const& name);
 };

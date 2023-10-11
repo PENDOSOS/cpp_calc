@@ -49,16 +49,16 @@ bool PluginManager::contains(std::string const& name)
     return func_table.contains(name);
 }
 
-double PluginManager::function(const std::string& name, double const& values) {
+double PluginManager::function(const std::string& name, double const& value1, double const& value2) {
     if (func_table.contains(name)) {
         try
         {
-            double res = func_table[name](values);
+            double res = func_table[name](value1, value2);
             return res;
         }
         catch (...)
         {
-            throw std::exception();
+            throw std::exception("aboba");
         }
     }
     else
