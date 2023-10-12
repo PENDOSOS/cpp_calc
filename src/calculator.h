@@ -3,10 +3,11 @@
 #include <iostream>
 #include <string>
 #include <Windows.h>
-#include <stack>
 #include <unordered_map>
+#include <stack> 
 #include "number.h"
 #include "plugin_manager.h"
+
 
 class Calculator
 {

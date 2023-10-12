@@ -46,14 +46,15 @@ void Calculator::makeEntryString(std::string const& str)
 	}
 }
 
+ 
 void Calculator::preprocess() 
 {
 	for (std::vector<std::string>::iterator it = entry_string.begin(); it != entry_string.end(); ++it)
 	{
 		if (plugin_manager.contains(*it))
 		{
-			auto it_plus1 = it + 2;
-			double value = stod(*it_plus1);
+			auto it_plus_1 = it + 2;
+			double value = stod(*it_plus_1);
 			double res = plugin_manager.function(*it, value);
 			*it = std::to_string(res);
 			entry_string.erase(it + 1, it + 4);

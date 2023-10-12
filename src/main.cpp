@@ -1,6 +1,7 @@
 #include <iostream>
 #include "calculator.h"
 
+ 
 int main()
 {
 	auto& calculator = Calculator::getInstance();  
@@ -17,8 +18,7 @@ int main()
 	}
 	catch (const std::exception&)
 	{
-		std::cout << "error";
+		std::cout << "Error";
 	}
-
 	return 0;
 }

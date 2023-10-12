@@ -1,6 +1,5 @@
 #include "plugin_manager.h"
 
-
 void PluginManager::addFunc(std::string const& name)
 {
     HMODULE hm = LoadLibraryA((path + name).c_str());
@@ -44,12 +43,13 @@ PluginManager::PluginManager()
     }
 }
 
+
 bool PluginManager::contains(std::string const& name)
 {
     return func_table.contains(name);
 }
 
-double PluginManager::function(const std::string& name, double const& value1, double const& value2) {
+double PluginManager::function(std::string const& name, double const& value1, double const& value2) {
     if (func_table.contains(name)) {
         try
         {
