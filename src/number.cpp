@@ -1,6 +1,7 @@
 #include "number.h"
 
-const Number operator+(const Number& left, const Number& right) 
+ 
+const Number operator+(Number const& left, const Number& right) 
 {
 	return Number(left.value + right.value);
 }
